@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      dir="ltr"
+      th:attr="lang=${#locale.language}, dir=${#locale.language == 'fa' ? 'rtl' : 'ltr'}">
+<head >
+    <title th:text="#{customers.title}"></title>
+    <th:block th:replace="~{fragments/head-tag :: head-tag}"></th:block>
+</head>
+<body data-bs-theme="light">
+<!-- نوار بالایی -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- سایدبار -->
+<div th:replace="~{fragments/sidebar :: sidebar}"></div>
+
+<!-- محتوای اصلی -->
+<main class="main-content">
+    <div class="container-fluid p-2">
+        <!-- در بخشی از صفحه که همیشه وجود دارد -->
+        <div id="deleteConfirmText" style="display: none;" th:text="#{customers.delete.confirm}"></div>
+        <!-- فرگمنت جدول مشتریان -->
+        <div id="customers-table-container">
+            <div th:replace="~{fragments/customers-table :: customers-table}"></div>
+        </div>
+    </div>
+</main>
+
+<!-- فوتر -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- مودال افزودن/ویرایش مشتری -->
+<div th:replace="~{fragments/customers-modal :: customer-modal}"></div>
+
+<!-- اسکریپت‌ها -->
+<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+<script th:src="@{/js/customers.js}"></script>
+</body>
+</html>

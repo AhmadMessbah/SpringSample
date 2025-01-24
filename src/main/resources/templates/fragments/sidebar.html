@@ -1,0 +1,41 @@
+<aside th:fragment="sidebar" class="sidebar">
+    <div class="sidebar-inner p-3">
+        <nav class="nav flex-column">
+            <a class="navbar-brand" href="#">
+                <img th:src="@{/icons/mftlogo.png}" width="80%" height="80%" class="d-inline-block justify-content-center" alt="">
+            </a>
+
+            <a class="nav-link" href="#">
+                <i class="fa fa-home me-2"></i>
+                <span th:text="#{navbar.home}"></span>
+            </a>
+
+            <a class="nav-link" href="/customers">
+                <i class="fa fa-users me-2"></i>
+                <span th:text="#{navbar.customers}"></span>
+            </a>
+
+            <!-- منوی محصولات -->
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                   href="#"
+                   data-bs-toggle="dropdown"
+                   data-bs-auto-close="outside">
+                    <i class="fa fa-box-archive me-2"></i>
+                    <span th:text="#{navbar.products}"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" th:text="#{navbar.add_product}"></a></li>
+                    <li><a class="dropdown-item" href="#" th:text="#{navbar.product_list}"></a></li>
+                </ul>
+            </div>
+
+            <!-- سایر منوها -->
+
+            <a class="nav-link" href="#">
+                <i class="fa fa-file-invoice me-2"></i>
+                <span th:text="#{navbar.invoices}"></span>
+            </a>
+        </nav>
+    </div>
+</aside>

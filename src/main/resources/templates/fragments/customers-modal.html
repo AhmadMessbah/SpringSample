@@ -1,0 +1,41 @@
+<div th:fragment="customer-modal">
+    <div class="modal fade" id="customerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" th:text="#{customers.modal.title}"></h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="customerForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="customerId">
+                        <div class="mb-3">
+                            <label th:text="#{customers.firstName}"></label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{customers.lastName}"></label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{customers.email}"></label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label th:text="#{customers.phone}"></label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <span th:text="#{customers.cancel}"></span>
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <span th:text="#{customers.save}"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

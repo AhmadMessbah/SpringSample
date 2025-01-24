@@ -1,0 +1,82 @@
+<div th:fragment="customers-table">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0" th:text="#{customers.title}"></h3>
+            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#customerModal">
+                <i class="fas fa-plus me-2"></i>
+                <span th:text="#{customers.add}"></span>
+            </button>
+        </div>
+
+        <div class="card-body">
+            <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+            <!-- کنترل‌های صفحه‌بندی و مرتب‌سازی -->
+            <div class="row mb-4 g-3">
+                <div class="col-12 col-md-4">
+                    <select class="form-select" id="pageSize" aria-label="تعداد در صفحه">
+                        <option value="10" th:text="#{customers.pageSize.10}"></option>
+                        <option value="20" th:text="#{customers.pageSize.20}"></option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-4">
+                    <select class="form-select" id="sortBy" aria-label="مرتب‌سازی">
+                        <option value="firstName" th:text="#{customers.sort.firstName}"></option>
+                        <option value="lastName" th:text="#{customers.sort.lastName}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- جدول مشتریان -->
+            <div class="table-responsive" id="customers-table">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                        <th th:text="#{customers.firstName}"></th>
+                        <th th:text="#{customers.lastName}"></th>
+                        <th th:text="#{customers.email}"></th>
+                        <th th:text="#{customers.phone}"></th>
+                        <th th:text="#{customers.actions}"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="customer : ${customers.content}">
+                        <td th:text="${customer.firstName}"></td>
+                        <td th:text="${customer.lastName}"></td>
+                        <td th:text="${customer.email}"></td>
+                        <td th:text="${customer.phone}"></td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-warning"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#customerModal"
+                                        th:data-id="${customer.id}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger"
+                                        th:data-id="${customer.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- صفحه‌بندی -->
+            <nav class="mt-4" aria-label="صفحه‌بندی">
+                <ul class="pagination justify-content-center">
+                    <li th:each="page : ${#numbers.sequence(0, customers.totalPages-1)}"
+                        class="page-item"
+                        th:classappend="${page == customers.number} ? 'active'">
+                        <a class="page-link"
+                           th:text="${page + 1}"
+                           th:data-page="${page}"
+                           role="button"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</html>
