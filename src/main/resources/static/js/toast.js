@@ -1,3 +1,4 @@
+// todo : not working
 function showToast(type, text) {
     var toastContainer = document.getElementById('toast-container');
 

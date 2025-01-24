@@ -45,6 +45,7 @@ function initLanguageSwitcher() {
 // ==================== ابزارهای کمکی ====================
 function showError(error) {
     const errorMsg = error.message || 'خطای ناشناخته رخ داد';
+    // todo : replace with toast
     alert(errorMsg);
 }
 
