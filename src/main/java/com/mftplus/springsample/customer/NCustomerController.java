@@ -29,23 +29,25 @@ public class NCustomerController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity addCustomer(@RequestBody Customer customer) {
+    public Customer addCustomer(@RequestBody Customer customer) {
         try {
             customerService.saveCustomer(customer);
             log.info("Customer added: " + customer);
-            return ResponseEntity.ok(
-                    Map.of(
-                                    "info", "Customer added",
-                                    "data", customer.toString())
-                            .toString());
+            return customer;
+//            return ResponseEntity.ok(
+//                    Map.of(
+//                                    "info", "Customer added",
+//                                    "data", customer.toString())
+//                            .toString());
         } catch (Exception e) {
             log.error(e.getMessage());
-            return ResponseEntity.badRequest().body(
-                    Map.of(
-                                    "error", "Customer not added",
-                                    "message", e.getMessage())
-                            .toString()
-            );
+            return null;
+//            return ResponseEntity.badRequest().body(
+//                    Map.of(
+//                                    "error", "Customer not added",
+//                                    "message", e.getMessage())
+//                            .toString()
+//            );
         }
     }
 

@@ -19,7 +19,6 @@ async function fetchData() {
         console.log(response);
         console.log(response.body);
 
-        // todo : has error
         if(!response.ok){
             throw new Error(response.statusText);
         }
@@ -27,8 +26,11 @@ async function fetchData() {
         // const contentDiv = document.getElementById('contentDiv');
         // contentDiv.innerHTML = response.body;
 
-        const json = await response.json();
-        console.log("Info"  + JSON.stringify(json));
+        // todo : has error
+        // const json = await response.json();
+        // console.log("Info"  + JSON.stringify(json));
+        console.log(response.text());
+
     }catch(error){
         console.log("Error" + error);
     }
