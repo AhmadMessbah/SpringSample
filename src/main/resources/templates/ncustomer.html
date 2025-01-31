@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="fa"
+      dir="rtl"
+      th:attr="lang=${#locale.language}, dir=${#locale.language == 'fa' ? 'rtl' : 'ltr'}">
+<head>
+    <title th:text="#{customers.title}"></title>
+    <th:block th:replace="~{fragments/head-tag :: head-tag}"></th:block>
+</head>
+<body>
+
+<div>
+    <span class="val-err" th:if="${#fields.hasErrors()}" th:each="err : ${#fields.allErrors()}" ></span>
+
+</div>
+
+<form id="customerForm" th:object="${customer}" th:action="@{/ncustomers}" th:method="POST">
+    <div class="modal-body">
+        <input type="hidden" id="customerId">
+        <div class="mb-3">
+            <label th:text="#{customers.firstName}"></label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+            <span class="val-err" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="#{customers.lastName}"></label>
+            <input type="text" class="form-control" id="lastName" name="lastName">
+            <span class="val-err" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="#{customers.email}"></label>
+            <input type="email" class="form-control" id="email" name="email">
+            <span class="val-err" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="mb-3">
+            <label th:text="#{customers.phone}"></label>
+            <input type="tel" class="form-control" id="phone" name="phone">
+            <span class="val-err" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary" id="saveCustomer">
+            <span th:text="#{customers.save}"></span>
+        </button>
+</form>
+
+<th:block th:replace="~{fragments/scripts :: scripts}"></th:block>
+<button onclick="fetchData()">Click</button>
+
+
+<script th:src="@{js/fetchScript.js}"></script>
+
+<script>
+
+
+    // document.getElementById("saveCustomer").addEventListener("submit", function(event) {
+    //     event.preventDefault();
+    // }
+
+    // function changeName(){
+    //     const nameField = document.getElementById('firstName');
+    //     nameField.value = "changed";
+    //     nameField.classList.add ("is-valid");
+    //     nameField.focus();
+    //     nameField.style.color = "green";
+    // }
+</script>
+</body>
+</html>

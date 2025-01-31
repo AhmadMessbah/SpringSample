@@ -7,6 +7,7 @@
     --bs-primary: #0d6efd;
     --bs-border-color: #dee2e6;
     --icon-color: #212529;
+    --validation-error-color: #dc3545;
 }
 
 [data-bs-theme="dark"] {
@@ -14,6 +15,8 @@
     --bs-body-color: #ffffff;
     --bs-border-color: #444444;
     --icon-color: #ffffff;
+    --validation-error-color: #ff7d8a;
+
 
     .sidebar {
         background: #2d2d2d !important;
@@ -176,4 +179,8 @@ body {
 
 td{
     color: var(--bs-body-color);
+}
+
+.val-err{
+    color: var(--validation-error-color);
 }
